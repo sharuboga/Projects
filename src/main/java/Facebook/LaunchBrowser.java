@@ -17,15 +17,16 @@ public class LaunchBrowser  {
 	
 	WebDriver driver;
 	@BeforeTest
-	public void SetUp() throws IOException 
+	public void SetUp() throws IOException, Exception 
 	{
 	Properties p=new Properties();
 	FileInputStream f= new FileInputStream("C:\\Users\\sharu\\workspace\\Facebook\\global.properties");
 	
 	p.load(f);
 	System.out.println(p.getProperty("browser"));
-	if(p.getProperty("browser").contains("Firefox"))
-	{
+	if(p.getProperty("browser").equals("Firefox"))
+	{         
+		Thread.sleep(2000);
 	     System.setProperty("webdriver.gecko.driver", "C:\\Users\\sharu\\Downloads\\geckodriver-v0.15.0-win64\\geckodriver.exe");
 	     driver =  new FirefoxDriver();
 	}
@@ -51,7 +52,11 @@ public class LaunchBrowser  {
 	{
 		driver.get("http://newtours.demoaut.com/");
 	}
+    else if(p.getProperty("url").equals("Guru99"))
+	{
+		driver.get( "http://demo.guru99.com/v4/");
+	}
 	
-  
+   
 }
 }

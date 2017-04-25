@@ -8,8 +8,10 @@ public class Facebook extends LaunchBrowser {
 	@Test
 	public void LoginFacebook() throws Exception
 	{
-	Credentials cr= new Credentials(driver);
-	cr.Login("sharuboga", "password");
+		LoginFunctionality cr= new LoginFunctionality(driver);
+	    cr.setUserName("sharuboga");
+	    cr.setPassword("sharu");
+	    cr.clickLogin();
 	
 	}
 	
